@@ -21,9 +21,9 @@ class Solution {
         Node temp=head;
         Node prev=temp; 
         
-        Node[] point=new Node[1001];
+        // Node[] point=new Node[1001];
         
-        HashMap<Node,Integer> map=new HashMap<>();
+        HashMap<Node,Node> map=new HashMap<>();
         int i=0;
         while(temp!=null){
             
@@ -36,8 +36,8 @@ class Solution {
                 prev.next=nn;
                 prev=nn;
             }
-            point[i]=nn;
-            map.put(temp,i);
+            // point[i]=nn;
+            map.put(temp,nn);
             
             temp=temp.next; 
             i++;
@@ -48,10 +48,8 @@ class Solution {
         Node temp1=newhead; 
         
         while(temp!=null){
-             if(temp.random!=null && map.containsKey(temp.random)){
-             int idx=(map.get(temp.random)).intValue();
-                 // System.out.println(idx);
-                 temp1.random=point[idx];
+             if(temp.random!=null && map.containsKey(temp.random)){ 
+                 temp1.random=(map.get(temp.random));
              }
             temp=temp.next;
             temp1=temp1.next;
