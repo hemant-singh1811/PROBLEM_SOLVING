@@ -50,7 +50,7 @@ class Solution {
         while(temp!=null){
              if(temp.random!=null && map.containsKey(temp.random)){
              int idx=(map.get(temp.random)).intValue();
-                 System.out.println(idx);
+                 // System.out.println(idx);
                  temp1.random=point[idx];
              }
             temp=temp.next;
