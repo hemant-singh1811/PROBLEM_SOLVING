@@ -14,11 +14,10 @@
  * }
  */
 class Solution {
-  public TreeNode bstToGst(TreeNode root) {
-       
+    
+    public TreeNode bstToGst(TreeNode root) { 
         bstToGst(root,0);
-        return root;
-
+        return root; 
     }
     
     public int bstToGst(TreeNode root,int val) {
