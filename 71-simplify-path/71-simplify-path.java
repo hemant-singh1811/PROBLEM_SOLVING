@@ -1,8 +1,8 @@
 class Solution {
     public String simplifyPath(String path) {
-        String[] paths = path.split("/");            // Split the string when we came across '/'
+        String[] paths = path.split("/");             
         Stack<String> st = new Stack<>();
-        for(String s: paths) {                             //iterating over the String to implement the conditions
+        for(String s: paths) {                          
             if(s.equals("")) continue;
             if(s.equals(".")) continue;
             if(s.equals("..")) 
@@ -10,6 +10,6 @@ class Solution {
                 else continue;
             else st.add(s);
         }
-        return "/" + String.join("/", st);         //return the new string from stack and adding '/' in between them.
+        return "/" + String.join("/", st);         
     }
 }
