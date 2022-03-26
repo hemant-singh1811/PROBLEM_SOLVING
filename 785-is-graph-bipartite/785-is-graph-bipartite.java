@@ -28,8 +28,7 @@ class Solution {
         for(int nbr:graph[node]){
             if(nbr!=parent){
                 // curr=1-curr;
-            if(DFS(nbr,node,graph,1-curr,vis)==false) {
-                // System.out.println(node+","+nbr);
+            if(DFS(nbr,node,graph,1-curr,vis)==false) { 
                 return false;}
                 
                 }
