@@ -1,9 +1,7 @@
 
 class Solution {
 
-    public int minimumSize(int[] nums, int max) {
-        
-        
+    public int minimumSize(int[] nums, int max) { 
         Arrays.sort(nums);
         int n=nums.length;
         if(n==0) return 0;
