@@ -9,6 +9,10 @@ class Solution {
             if(target>0 && numbers[mid]>target){
                 j=mid-1;
             }
+            else{
+                if(numbers[i]+numbers[mid]>target){
+                    j=mid-1;
+                }
             if(numbers[i]+numbers[j]==target){ 
                 arr[0]=i+1;
                 arr[1]=j+1;
@@ -20,6 +24,7 @@ class Solution {
             if(numbers[i]+numbers[j]>target){
                 j--; 
             }
+        }
         }
         return arr;
     }
