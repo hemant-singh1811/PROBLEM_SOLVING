@@ -1,29 +1,29 @@
 class Solution {
-    static List<List<Integer>> ans;
     public List<List<Integer>> permute(int[] nums) {
-       ans=new ArrayList<>();
-        boolean visited[]=new boolean[nums.length]; 
-        per(nums,visited, new ArrayList<>());
+        List<List<Integer>> ans=new ArrayList<>();
+        
+        
+        rec(nums,new ArrayList<>(),ans,new boolean[nums.length]);
+        
         return ans;
     }
     
-    public static void per(int[] nums,boolean[] visited,ArrayList<Integer> arr)     {
-       if(arr.size()==nums.length){ 
-           ans.add(arr);
-           return ;
-       } 
-        int n=nums.length;
+    public static void rec(int[] nums,ArrayList<Integer> a,List<List<Integer>> ans,boolean[] used){
         
-        for(int i=0;i<n;i++){
-            int el=nums[i]; 
-            ArrayList<Integer> subans=new ArrayList<>(arr);
-             
-            if(!visited[i]){ 
-                visited[i]=true;
-                subans.add(el);
-                per(nums,visited,subans);
-                visited[i]=false;                
-            } 
+        if(a.size()==nums.length){
+            ans.add(new ArrayList<>(a));
+            return ;
+        }
+        
+        for(int i=0;i<nums.length;i++){
+        
+            if(used[i]) continue;
+            
+            a.add(nums[i]);
+            used[i]=true;
+            rec(nums,a,ans,used);
+            used[i]=false;
+            a.remove(a.size()-1);
         } 
-    } 
+    }
 }
