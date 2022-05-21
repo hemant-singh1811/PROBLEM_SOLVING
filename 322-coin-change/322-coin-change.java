@@ -1,52 +1,22 @@
 class Solution {
-    public int coinChange(int[] arr, int target) {
-        
-       if(target==0) return 0;
-        
-		Arrays.sort(arr);
-
-		int n = arr.length;
-
-		int[] dp = new int[target + 1];
-
-		dp[0] = 0;
-
-		for (int i = 0; i < n; i++) {
-
-			int el = arr[i];
-
-			for (int j = 1; j <= target; j++) {
-
-				int ans = dp[j];
-
-				if (j >= el) {
-					int ans1 = 0;
-					if (j == el) {
-						ans1 = 1;
-					} else if (j > el && dp[j - el] != 0) {
-						ans1 = 1 + dp[j - el];
-					}
-					if (ans != 0 && ans1 != 0) {
-						ans = Math.min(ans, ans1);
-					} else {
-						if (ans1 != 0)
-							ans = ans1;
-					}
-				}
-
-				dp[j] = ans;
-				// p(ans, " ");
-			}
-		
-		// pt("");
-		}
-		int ans = dp[target];
-
-		if (ans == 0)
-			return -1;
-		else
-			return ans;
-
-        
+    public int coinChange(int[] coins, int amount) {
+        int dp[][] = new int[coins.length + 1][amount+1];
+        for(int i = 0; i < dp.length; i++) {
+            for(int j = 0; j < dp[0].length; j++) {
+                if(j == 0) {
+                    dp[i][j] = 0;
+                }
+                else if(i == 0) {
+                    dp[i][j] = (int)1e5; 
+                }
+                else if(coins[i-1] > j) {
+                    dp[i][j] = dp[i-1][j];
+                }
+                else {
+                    dp[i][j] = Math.min(1+dp[i][j-coins[i-1]], dp[i-1][j]);
+                }
+            }
+        }
+        return dp[coins.length][amount] > (int)1e4 ? -1:dp[coins.length][amount];
     }
 }
